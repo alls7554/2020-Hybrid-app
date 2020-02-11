@@ -1,0 +1,209 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>jQuery Mobile</title>
+	
+	<script type="cordova.js"></script>
+
+	<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css"/>
+	<script src="./js/jquery-1.11.1.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+
+	<style>
+   		li { list-style:none; }
+   		a{
+   			text-decoration: none;
+   			color: #FFFFFF;
+   		}
+  		#map {
+        	height: 400px;  /* The height is 400 pixels */
+        	width: 100%;  /* The width is the width of the web page */
+       	}
+       	#tab{
+       		border: 1px solid #FFFFFF;
+       		text-align: center;
+       		font-size: 10pt;
+       	}
+       	#tab td{
+       		border: 1px solid #FFFFFF;
+       	}
+  		.picture { list-style:none; padding:0; margin:0; }
+  		.picture li { float:left; width:50%;}
+  		.picture li a {display:block; margin:5px; border: 1px }
+  		.picture li img { display:block; width:50%;  height:auto;}
+  		.picture li img:hover { display:block; width:100%;  height:auto;}
+
+	</style>
+</head>
+
+<body>
+<div data-theme="b">
+	<div data-role="page" id="home">
+		<div data-role="header" data-theme="b">
+			<a id="infobtn" href="#info" data-role="button" data-icon="info" data-iconpos="notext" style="display: none"></a>
+			<h1>Corona Virus</h1>
+			<a id="infobtn" href="#info" data-role="button" data-icon="info" data-iconpos="notext"></a>
+		</div>
+		<div data-role="content" style="text-align:center">
+				<img src="main.jpg" >
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#intro">바이러스 소개</a></li>
+				<li><a href="#curr_situ">현재상황</a></li>
+				<li><a href="#prevention">예방법</a></li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<p style="text-align: center">Corona Virus</p>
+		</div>
+	</div>
+	
+	<div data-role="page" id="intro" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">Home</a>
+			<h1>바이러스 소개</h1>
+			<a id="infobtn" href="#info" data-role="button" data-icon="info" data-iconpos="notext"></a>
+		</div>
+		<div data-role="content">
+				<div  style="text-align:center">
+					<img src="virusdesign.jpg">
+				</div>			
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>코로나 바이러스란?</h3>
+					 &nbsp; 2019년 12월 중국 우한에서 발생한 신종코로나바이러스감염증(일명 우한 폐렴)의 원인 바이러스(병원체)로, 인체 감염 7개 코로나바이러스 중 하나다.<br/>&nbsp; 신종코로나바이러스(2019-nCoV)는 감염자의 비말(침방울)이 호흡기나 눈·코·입의 점막으로 침투될 때 전염된다. <br/>&nbsp; 감염되면 약 2~14일(추정)의 잠복기를 거친 뒤 발열(37.5도) 및 기침이나 호흡곤란 등 호흡기 증상, 폐렴이 주 증상으로 나타나지만 무증상 감염 사례도 드물게 나오고 있다.<br/>
+				</div>
+				<div data-role="collapsible">
+					<h3>발원지</h3>
+					<p>중국 우한</p>
+					<div id="map"></div>
+    				<script>
+      					var map;
+      					function initMap() {
+        					map = new google.maps.Map(document.getElementById('map'), {
+          					center: {lat: 30.5769089, lng: 114.2303385},
+          					zoom: 8
+        					});
+      					}
+    				</script>
+    				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAECOgFFFxSPyPiPqKlUm0Mt3yvCqbPd2M&callback=initMap" async defer></script>
+				</div>
+				<div data-role="collapsible" >
+					<h3>코로나 바이러스의 특징</h3>
+					<table id="tab">
+					 	<tr>
+					 		<td>&nbsp; 외국어 &nbsp; &nbsp;표기</td><td>2019 novel Coronavirus</td>
+					 	</tr>
+					 	<tr>
+					 		<td>최초 발생</td><td>2019년 12월 중국 후베이(湖北)성 우한(武漢)</td>
+					 	</tr>
+					 	<tr>
+					 		<td>잠복기</td><td>2 ~ 14일 (추정)</td>
+					 	</tr>
+					 	<tr>
+					 		<td>감염 증상</td><td>발열, 기침, 호흡곤란, 근육통, 설사 등</td>
+					 	</tr>
+					 	<tr>
+					 		<td>치료</td><td>아직 백신이나 치료제는 없음. 따라서 환자의 증상에 따른 대증치료 진행</td>
+					 	</tr>
+					 </table>
+					
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<p style="text-align: center">Corona Virus</p>
+		</div>		
+	</div>
+
+	<div data-role="page" id="curr_situ" data-theme="b">
+		<div data-role="header">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">Home</a>
+			<h1>현재 상황</h1>
+			<a id="infobtn" href="#info" data-role="button" data-icon="info" data-iconpos="notext"></a>
+		</div>
+		<div data-role="content">
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>글로벌 상황</h3>
+					<iframe src="https://www.google.com/maps/d/embed?mid=1a04iBi41DznkMaQRnICO40ktROfnMfMx" width="100%" height="450px"></iframe>
+					<a href="https://bnonews.com/index.php/2020/02/the-latest-coronavirus-cases/">출처</a>
+				</div>
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>국내 상황</h3>
+					<table id="tab">
+						<tr>
+							<td>확진환자수</td><td>28명</td>
+						</tr>
+						<tr>
+							<td>퇴원조치수</td><td>4명</td>
+						</tr>
+						<tr>
+							<td>검사진행수</td><td>865명</td>
+						</tr>
+					</table>
+					<p><a href="http://ncov.mohw.go.kr/index_main.jsp">출처 : 질병관리본부</a></p>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<p style="text-align: center">Corona Virus</p>
+		</div>
+	</div>
+	
+	<div data-role="page" id="prevention" data-theme="b">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">Home</a>
+			<h1>예방법</h1>
+			<a id="infobtn" href="#info" data-role="button" data-icon="info" data-iconpos="notext"></a>
+		</div>
+		<div data-role="content" >
+			<div><img src="prevention.jpg" style="width: 100%"></div>
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" >
+					<h3>손 씻기</h3>
+					<div><img src="handwash.jpg" style="width: 100%;"></div>
+				</div>
+				<div data-role="collapsible">
+					<h3>마스크 착용</h3>
+					<p>KF94 이상 마스크 착용</p>
+					<img src="kf94.jpg" style="width:100%;">
+				</div>
+				<div data-role="collapsible">
+					<h3>참고영상</h3>
+					<div>
+						<iframe width="100%" height="240" src="https://www.youtube.com/embed/GXcKt4MA9cs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>	
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<p style="text-align: center">Corova Virus</p>
+		</div>	
+	</div>
+
+
+	<div data-role="page" id="info" data-theme="b">
+		<div data-role="header">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">Home</a>
+			<h1>Developer Infomation</h1>
+		</div>
+		<div data-role="content" style="text-align: center;">
+			<p>Park Cheol Oh</p>
+			<p>KyungSung University</p>
+			<p>Software</p>
+			<p>Linc+ HybridApp</p>
+			<p>2020 / 02 / 11</p>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<p style="text-align: center">Corona Virus</p>
+		</div>
+	</div>
+	
+
+
+</div>	
+</body>
+</html>
